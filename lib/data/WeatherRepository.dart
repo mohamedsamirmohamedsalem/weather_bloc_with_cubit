@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'Weather.dart';
+import 'model/Weather.dart';
 
 abstract class WeatherRepository {
   Future<Weather> fetchWeather(String cityName);

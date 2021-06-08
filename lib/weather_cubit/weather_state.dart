@@ -1,42 +1,27 @@
-import '../Weather.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
-abstract class WeatherState {
-  const WeatherState();
+import '../data/model/Weather.dart';
+
+@immutable
+abstract class WeatherState extends Equatable {
+  WeatherState();
 }
 
 class WeatherInitial extends WeatherState {
-  const WeatherInitial();
+  WeatherInitial();
 }
 
 class WeatherLoading extends WeatherState {
-  const WeatherLoading();
+  WeatherLoading();
 }
 
 class WeatherLoaded extends WeatherState {
   final Weather weather;
-  const WeatherLoaded(this.weather);
-
-  @override
-  bool operator ==(Object obj) {
-    if (identical(this, obj)) return true;
-    return obj is WeatherLoaded && obj.weather == weather;
-  }
-
-  @override
-  int get hashCode => weather.hashCode;
+  WeatherLoaded(this.weather);
 }
 
 class WeatherError extends WeatherState {
   final String message;
-  const WeatherError(this.message);
-
-  @override
-  bool operator ==(Object obj) {
-    if (identical(this, obj)) return true;
-
-    return obj is WeatherError && obj.message == message;
-  }
-
-  @override
-  int get hashCode => message.hashCode;
+  WeatherError(this.message);
 }
